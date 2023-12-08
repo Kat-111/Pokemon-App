@@ -1,0 +1,25 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(170, 200, 220);
+    border: 1px solid rgb(230, 230, 230);
+    width: 7em;
+    height: 10em;
+    border-radius: 20px;
+}
+.card-container:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.image {
+    width: 70px;
+    height: 70px;
+}
+
+.title {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}

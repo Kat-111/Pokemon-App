@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "x-content-type-options": "error",
+    "http-cache": ["error", {
+      "maxAgeTarget": 300, // 5 minutes in seconds
+      "maxAgeResource": 1576800 // 6 months in seconds
+  }],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "max-width: fit-content"
+        ]
+      }
+    ],
+    "typescript-config/strict": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
+  }
+}

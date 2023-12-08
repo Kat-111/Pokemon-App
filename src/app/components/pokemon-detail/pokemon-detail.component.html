@@ -1,0 +1,110 @@
+<div *ngIf="isLoading" class="loader-overlay">
+    <div *ngIf="isLoading" class="spinner"></div>
+</div>
+
+<div *ngIf="!isLoading" class="container">
+
+    <h2 class="title">{{pokeItem.name}}</h2>
+    
+    <div class="main-presentation">
+        <img alt="pokeimg" src="{{pokeItem.img}}" class="image" />
+    
+        <div class="type-stats-container">
+            <div class="types">
+                <div 
+                *ngFor="let t of pokeItem.types"
+                [ngStyle]="{ 'background': getTypeColor(t.type.name) }"
+                class="type">
+                    {{t.type.name}}
+                </div>
+            </div>
+            <ul class="stats">
+                <li *ngFor="let s of pokeStats" class="stats-list-item">
+                    <div class="stat-name">{{ s.stat.name }}</div>
+                    <div class="meter orange">
+                        <span [ngStyle]="{'width': s.base_stat+'px'}"> {{ s.base_stat }} </span>
+                    </div>
+                </li>
+            </ul>
+            <p>
+                <b>Description: </b>
+                {{pokeDescription}}
+            </p>
+        </div>
+    </div>
+    
+    <div class="profile-container">
+        <h2 class="profile-title">Profile</h2>
+        <div>
+            <ul class="profile">
+                <li>
+                    <p class="label">Height: </p> <p class="value">{{pokeItem.height/10}} m</p>
+                </li>
+                <li>
+                    <p class="label">Catch Rate: </p> <p class="value">{{pokeProfile.capture_rate}}%</p>
+                </li>
+                <li>
+                    <p class="label">Egg Groups: </p> 
+                    <p class="value" *ngFor="let egg of pokeEggs">{{egg.name}}</p>
+                </li>
+                <li>
+                    <p class="label">Abilities: </p> 
+                    <p class="value" *ngFor="let a of pokeAbilities">{{a.ability.name}}</p>
+                </li>
+                <li>
+                    <p class="label">Weight: </p> <p class="value">{{pokeItem.weight/10}} kg</p>
+                </li>
+                <li>
+                    <p class="label">Gender Ratio:</p> 
+                    <p class="value" *ngIf="pokeProfile.gender_rate >= 0">
+                        {{maleChances}}% &#9794; {{femaleChances}}% &#9792;
+                    </p>
+                    <p class="value" *ngIf="pokeProfile.gender_rate < 0">
+                        genderless
+                    </p>
+                </li>
+                <li>
+                    <p class="label">Hatch steps:</p> <p class="value">{{hatchSteps}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="evolutions-container">
+        <h2 class="evolutions-title">Evolutions</h2>
+    
+        <div class="evolutions" *ngIf="pokeItem.name !== pokeEvolvedName">
+            <div class="evo-images">
+                <img alt="baby" src="{{pokeItem.tinyImg}}" />
+                <img class="arrow" alt="arrow" src="../../../assets/arrow.jpg"/>
+                <img alt="evolved_poke" src="{{pokeEvolvedData.tinyImg}}" />
+            </div>
+            <div class="evo-text">
+                <span class="pokeName">{{pokeItem.name}}</span> 
+                evolves into 
+                <span class="pokeName">{{pokeEvolvedName}}</span>
+                at level: {{evoLevel !== null ? evoLevel : 'unknown'}}
+            </div>
+        </div>
+    
+        <div class="evolutions" *ngIf="pokeItem.name === pokeEvolvedName">
+            <div class="evo-images">
+                <img alt="evolved_poke" src="{{pokeEvolvedData.tinyImg}}" />
+            </div>
+            <div class="evo-text">
+                <span class="pokeName">{{pokeEvolvedName}}</span> is in final form.
+            </div>
+        </div>
+    </div>
+    
+    <div class="damage-container">
+        <h2 class="damage-title">Damage When Attacked</h2>
+        <div class="profile">
+            <div 
+                [ngStyle]="{ 'background-color': getDamageColor(pokeDamageWhenAttacked) }"
+                class="type">
+                    {{pokeDamageWhenAttacked}}
+            </div>
+        </div>
+    </div>
+</div>

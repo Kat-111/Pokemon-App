@@ -1,0 +1,55 @@
+.add-btn {
+    background-color: #365FAB;
+    max-width: fit-content;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    border-style: unset;
+    border-radius: 20px;
+    margin: 0 20px 20px 0;
+}
+.add-btn:hover {
+    background-color: #264379;
+}
+
+.forms-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.user-form{
+    border-radius: 10px;
+    border: 2px solid gray;
+    padding: 0.5em;
+    max-width: max-content;
+}
+.user-form button{
+    margin: 0.5em;
+}
+
+.form-group{
+    padding: 0.7em;
+}
+.form-group label{
+    color: rgb(45, 45, 83);
+    padding-right: 0.3em;
+}
+.form-group p{
+    color: #ff7575;
+    font-size: 11px;
+}
+input.ng-touched.ng-invalid{
+    border: 1px solid #ff7575;
+}
+
+@media (min-width:400px) and (max-width: 768px){
+    span{
+        font-size: 10px;
+    }
+    .forms-container{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 7px;
+    }
+}

@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 3em;
+}
+
+.pokelogo {
+    max-width: 500px;
+}
+
+.admin-btn {
+    background-color: #365FAB;
+    max-width: fit-content;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    border-style: unset;
+    border-radius: 20px;
+    align-self: center;
+}
+
+.admin-btn:hover {
+    background-color: #264379;
+}
+
+@media (min-width:400px) and (max-width: 768px){
+    .pokelogo {
+        max-width: 300px;
+    }
+}

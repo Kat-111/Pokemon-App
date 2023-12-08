@@ -1,0 +1,101 @@
+<button class="add-btn" (click)="addForm()" type="button">Add new form</button> <span>You can add up to 5 forms at a time.</span>
+
+<div class="forms-container">
+    <div *ngFor="let userForm of dynamicForms; let i = index">
+        <form [formGroup] = "userForm" class="user-form" (ngSubmit)="onSaveForm(userForm)">
+            <div class="form-group">
+                <label for="name{{i}}">Name</label>
+                <input
+                    type="text"
+                    formControlName="name{{i}}"
+                    id="name{{i}}"
+                >
+                <p *ngIf="userForm.get('name' + i).invalid && userForm.get('name' + i).touched">
+                    Name is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="description{{i}}">Description</label>
+                <input
+                    type="text"
+                    formControlName="description{{i}}"
+                    id="description{{i}}"
+                >
+                <p *ngIf="userForm.get('description' + i).invalid && userForm.get('description' + i).touched">
+                    Description is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="price{{i}}">Price</label>
+                <input
+                    type="text"
+                    formControlName="price{{i}}"
+                    id="price{{i}}"
+                >
+                <p *ngIf="userForm.get('price' + i).invalid && userForm.get('price' + i).touched">
+                    Price with 2 decimal places (.00) is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="category{{i}}">Category</label>
+                <select 
+                    id="category{{i}}"
+                    formControlName="category{{i}}"
+                    title="category"
+                >
+                    <option value="electronics">Electronics</option>
+                    <option value="cloths">Cloths</option>
+                    <option value="blankets">Blankets</option>
+                </select>
+                <p *ngIf="userForm.get('category' + i).invalid && userForm.get('category' + i).touched">
+                    Category is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="url{{i}}">Image URL</label>
+                <input
+                    type="text"
+                    formControlName="url{{i}}"
+                    id="url{{i}}"
+                >
+                <p *ngIf="userForm.get('url' + i).invalid && userForm.get('url' + i).touched">
+                    Image URL is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone{{i}}">Phone number</label>
+                <input
+                    type="text"
+                    formControlName="phone{{i}}"
+                    id="phone{{i}}"
+                >
+                <p *ngIf="userForm.get('phone' + i).invalid && userForm.get('phone' + i).touched">
+                    Phone is required.
+                </p>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone-type{{i}}">Select</label>
+                <select 
+                    id="phone-type{{i}}"
+                    formControlName="phone-type{{i}}"
+                    title="phone-type"
+                >
+                    <option value="mobile">Mobile</option>
+                    <option value="landline">Landline</option>
+                </select>
+                <p *ngIf="userForm.get('phone-type' + i).invalid && userForm.get('phone-type' + i).touched">
+                    Phone type is required.
+                </p>
+            </div>
+    
+            <button type="submit" [disabled]="userForm.invalid">Submit</button>
+            <button type="button" (click)="onReset(userForm)">Reset</button>
+        </form>
+    </div>
+</div>

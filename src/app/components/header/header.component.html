@@ -1,0 +1,31 @@
+<div class="header">
+
+    <nav class="navbar">
+
+        <ul class="nav-left">
+            <li><a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Pokemon</a></li>
+            <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+            <li><a routerLink="/pokemon-detail/1" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Details</a></li>
+            <li *ngIf="isAdmin()"><a routerLink="/create-new-pokemon" routerLinkActive="active-link">Create product</a></li>
+            <li *ngIf="isAdmin()">
+                <a 
+                    routerLink="/products-list" 
+                    routerLinkActive="active-link"
+                    [class.inactive-link]="!isLinkActive()"
+                >Products list</a>
+            </li>
+        </ul>
+        <div class="nav-right">
+            <input 
+                type="text"
+                id="search"
+                placeholder="Search Pokemon..."
+                (keyup.enter)="onSearch()"
+                [(ngModel)]="searchTerm"
+            >
+            <button class="logout-btn">Log out</button>
+        </div>
+        
+    </nav>
+
+</div>
